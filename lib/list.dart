@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+const title_ = "Anime Wallpapers";
+const baseFont = "Redressed";
+const logoPath = "assets/images/mikey.jpg";
+const heroTag = "logo";
+
 class AnimeList extends StatefulWidget {
   const AnimeList({ Key? key }) : super(key: key);
 
@@ -8,13 +13,17 @@ class AnimeList extends StatefulWidget {
 }
 
 class _AnimeListState extends State<AnimeList> {
+  
+  static const bgImgPath = "assets/images/wallpaper1.jpg";
+  static const animeTitles = ["Demon Slayer", "Naruto"];
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/wallpaper1.jpg')
+            image: AssetImage(bgImgPath)
           ),
         ),
 
@@ -33,18 +42,18 @@ class _AnimeListState extends State<AnimeList> {
             ],
             centerTitle: true,
             title: const Text(
-              'Anime Wallpapers',
+              title_,
               style: TextStyle(
                 color: Colors.black,
-                fontFamily: "Redressed",
+                fontFamily: baseFont,
                 fontSize: 35,
                 ),
               ),
             backgroundColor: const Color(0xffeba10e),
             leading: const Hero(
-              tag: 'logo', 
+              tag: heroTag, 
               child: CircleAvatar(
-                backgroundImage: AssetImage('assets/images/mikey.jpg'),
+                backgroundImage: AssetImage(logoPath),
               ),
             ),
           ),
@@ -60,15 +69,15 @@ class _AnimeListState extends State<AnimeList> {
 
                 ElevatedButton(
                   onPressed: () => {}, 
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 35,
                       vertical: 10,
                       ),
                     child: Text(
-                      'Demon Slayer',
-                      style: TextStyle(
-                        fontFamily: "Redressed",
+                      animeTitles[0],
+                      style: const TextStyle(
+                        fontFamily: baseFont,
                         fontSize: 50,
                         color: Colors.black,
                       ),
@@ -85,15 +94,15 @@ class _AnimeListState extends State<AnimeList> {
 
                 ElevatedButton(
                   onPressed: () => {}, 
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 100,
                       vertical: 10,
                       ),
                     child: Text(
-                      'Naruto',
-                      style: TextStyle(
-                        fontFamily: "Redressed",
+                      animeTitles[1],
+                      style: const TextStyle(
+                        fontFamily: baseFont,
                         fontSize: 50,
                         color: Colors.black,
                       ),
@@ -114,10 +123,6 @@ class _AnimeListState extends State<AnimeList> {
                 //     ),
                 //     ),
                 // ),
-
-                const SizedBox(
-                  height: 60,
-                ),
 
                 // const Image(
                 //   image: AssetImage('assets/images/zenitsu-simple.jpg')

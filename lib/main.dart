@@ -8,10 +8,12 @@ void main() {
 class MyApplication extends StatelessWidget {
   const MyApplication({ Key? key }) : super(key: key);
 
+  static const title_ = "My Mobile App";
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'My mobile app',
+      title: title_,
       home: LandingPage(),
     );
   }
@@ -29,9 +31,9 @@ class LandingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
             const Hero(
-              tag: 'logo',
+              tag: heroTag,
               child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/mikey.jpg'),
+                      backgroundImage: AssetImage(logoPath),
                       radius: 75,
                     ),
             ),
@@ -41,10 +43,10 @@ class LandingPage extends StatelessWidget {
 
             const Center(
               child: Text(
-                'Anime Wallpapers',
+                title_,
                 style: TextStyle(
                   fontSize: 40,
-                  fontFamily: "Redressed",
+                  fontFamily: baseFont,
                 ),
               ),
             ),
