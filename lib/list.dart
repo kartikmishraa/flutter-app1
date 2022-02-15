@@ -15,8 +15,44 @@ class AnimeList extends StatefulWidget {
 class _AnimeListState extends State<AnimeList> {
   
   static const bgImgPath = "assets/images/wallpaper1.jpg";
-  static const animeTitles = ["Demon Slayer", "Naruto"];
+  static const animeTitles = [
+                            "Demon Slayer", 
+                            "Naruto", 
+                            "Tokyo Revengers",
+                            "Horimiya",
+                            "Black Clover",
+                            ];
   
+  SizedBox mySizedBox(double height_, double width_) {
+    return SizedBox(
+      height: height_,
+      width: width_,
+    );
+  }
+
+  ElevatedButton myElevatedButton(String anime_, double paddingH, double paddingV) {
+    return ElevatedButton(
+      onPressed: () => {}, 
+      child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: paddingH,
+                vertical: paddingV,
+              ),
+              child: Text(
+                anime_,
+                style: const TextStyle(
+                  fontFamily: baseFont,
+                  fontSize: 50,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+        style: ElevatedButton.styleFrom(
+          primary: Colors.amber.shade600,
+          ),
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -63,72 +99,27 @@ class _AnimeListState extends State<AnimeList> {
           body: SingleChildScrollView(
             child: Center(child: Column(
               children: [
-                const SizedBox(
-                  height: 40,
-                ),
+                mySizedBox(40, 0),
 
-                ElevatedButton(
-                  onPressed: () => {}, 
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 35,
-                      vertical: 10,
-                      ),
-                    child: Text(
-                      animeTitles[0],
-                      style: const TextStyle(
-                        fontFamily: baseFont,
-                        fontSize: 50,
-                        color: Colors.black,
-                      ),
-                      ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.amber.shade600,
-                    ),
-                ),
+                myElevatedButton(animeTitles[0], 35, 10),
 
-                const SizedBox(
-                  height: 40,
-                ),
+                mySizedBox(40, 0),
 
-                ElevatedButton(
-                  onPressed: () => {}, 
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 100,
-                      vertical: 10,
-                      ),
-                    child: Text(
-                      animeTitles[1],
-                      style: const TextStyle(
-                        fontFamily: baseFont,
-                        fontSize: 50,
-                        color: Colors.black,
-                      ),
-                      ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.amber.shade600,
-                    ),
-                ),
+                myElevatedButton(animeTitles[1], 100, 10),
 
-                // Padding(
-                //   padding: EdgeInsets.only(left: 20),
-                //   child: Text(
-                //     'Demon Slayer',
-                //     style: TextStyle(
-                //       fontFamily: "Redressed",
-                //       fontSize: 30,
-                //     ),
-                //     ),
-                // ),
+                mySizedBox(40, 0),
 
-                // const Image(
-                //   image: AssetImage('assets/images/zenitsu-simple.jpg')
-                // ),
+                myElevatedButton(animeTitles[2], 12, 10),
 
-                // next up: ElevatedButton to change anime
+                mySizedBox(40, 0),
+
+                myElevatedButton(animeTitles[3], 80, 10),
+
+                mySizedBox(40, 0),
+
+                myElevatedButton(animeTitles[4], 45, 10),
+
+                mySizedBox(40, 0),
               ],
           ),
           ),
