@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-const title_ = "Anime Wallpapers";
-const baseFont = "Redressed";
-const logoPath = "assets/images/mikey.jpg";
-const heroTag = "logo";
+const String title_ = "Anime Wallpapers";
+const String baseFont = "Redressed";
+const String logoPath = "assets/images/mikey.jpg";
+const String heroTag = "logo";
 
 class AnimeList extends StatefulWidget {
   const AnimeList({ Key? key }) : super(key: key);
@@ -14,14 +15,22 @@ class AnimeList extends StatefulWidget {
 
 class _AnimeListState extends State<AnimeList> {
   
-  static const bgImgPath = "assets/images/wallpaper1.jpg";
-  static const animeTitles = [
-                            "Demon Slayer", 
-                            "Naruto", 
-                            "Tokyo Revengers",
-                            "Horimiya",
-                            "Black Clover",
-                            ];
+  static const String bgImgPath = "assets/images/wallpaper1.jpg";
+  static const List<String> animeTitles = [
+    "Demon Slayer",
+    "Naruto",
+    "Tokyo Revengers",
+    "Horimiya",
+    "Black Clover",
+  ];
+
+  static const List<String> url = [
+    'https://wallpaperaccess.com/demon-slayer-phone',
+    'https://wallpaperaccess.com/naruto-phone',
+    'https://www.peakpx.com/en/search?q=tokyo+revengers',
+    'https://wallpaperaccess.com/horimiya',
+    'https://wallpaperaccess.com/black-clover-mobile',
+  ];
   
   SizedBox mySizedBox(double height_, double width_) {
     return SizedBox(
@@ -30,26 +39,38 @@ class _AnimeListState extends State<AnimeList> {
     );
   }
 
-  ElevatedButton myElevatedButton(String anime_, double paddingH, double paddingV) {
+  ElevatedButton myElevatedButton(int animeNum, double paddingH, double paddingV) {
     return ElevatedButton(
-      onPressed: () => {}, 
+      onPressed: () async {
+        if (!await launch(url[animeNum], forceWebView: true,  enableJavaScript: true)) {
+        throw "Could not launch";
+        }
+      },  
       child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: paddingH,
                 vertical: paddingV,
               ),
               child: Text(
-                anime_,
+                animeTitles[animeNum],
                 style: const TextStyle(
                   fontFamily: baseFont,
-                  fontSize: 50,
+                  fontSize: 30,
                   color: Colors.black,
                 ),
               ),
             ),
-        style: ElevatedButton.styleFrom(
-          primary: Colors.amber.shade600,
-          ),
+         style: ButtonStyle(
+           backgroundColor: MaterialStateProperty.resolveWith<Color>(
+               (Set<MaterialState> states) {
+                 if (states.contains(MaterialState.pressed)) return Colors.yellow;
+                 return Colors.amber.shade600;
+               },
+         ),
+        //ElevatedButton.styleFrom(
+          //primary: //Colors.amber.shade600,
+          //),
+      ),
       );
   }
 
@@ -101,23 +122,23 @@ class _AnimeListState extends State<AnimeList> {
               children: [
                 mySizedBox(40, 0),
 
-                myElevatedButton(animeTitles[0], 35, 10),
+                myElevatedButton(0, 35, 10),
 
                 mySizedBox(40, 0),
 
-                myElevatedButton(animeTitles[1], 100, 10),
+                myElevatedButton(1, 75, 10),
 
                 mySizedBox(40, 0),
 
-                myElevatedButton(animeTitles[2], 12, 10),
+                myElevatedButton(2, 25, 10),
 
                 mySizedBox(40, 0),
 
-                myElevatedButton(animeTitles[3], 80, 10),
+                myElevatedButton(3, 65, 10),
 
                 mySizedBox(40, 0),
 
-                myElevatedButton(animeTitles[4], 45, 10),
+                myElevatedButton(4, 45, 10),
 
                 mySizedBox(40, 0),
               ],
