@@ -42,7 +42,7 @@ class _AnimeListState extends State<AnimeList> {
   ElevatedButton myElevatedButton(int animeNum, double paddingH, double paddingV) {
     return ElevatedButton(
       onPressed: () async {
-        if (!await launch(url[animeNum], forceWebView: true,  enableJavaScript: true)) {
+        if (!await launch(url[animeNum], forceWebView: false,  enableJavaScript: true)) {
         throw "Could not launch";
         }
       },  
@@ -67,9 +67,6 @@ class _AnimeListState extends State<AnimeList> {
                  return Colors.amber.shade600;
                },
          ),
-        //ElevatedButton.styleFrom(
-          //primary: //Colors.amber.shade600,
-          //),
       ),
       );
   }
